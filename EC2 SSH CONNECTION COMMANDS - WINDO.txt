@@ -1,0 +1,55 @@
+EC2 SSH CONNECTION COMMANDS - WINDOWS CMD
+=========================================
+
+1. Check if the PEM file is in Downloads:
+
+dir "%USERPROFILE%\Downloads\*.pem"
+
+
+2. If you don't see the PEM file, search your entire user folder:
+
+dir "%USERPROFILE%\*.pem" /s
+
+
+3. Set PEM file permissions:
+
+icacls "C:\Users\manoj\Downloads\DEVOPS(FLM).pem" /inheritance:r
+
+
+4. Give your Windows user read permission:
+
+icacls "C:\Users\manoj\Downloads\DEVOPS(FLM).pem" /grant:r "%USERNAME%:R"
+
+
+5. Connect to Amazon Linux EC2:
+
+ssh -i "C:\Users\manoj\Downloads\DEVOPS(FLM).pem" ec2-user@ec2-98-88-74-45.compute-1.amazonaws.com
+
+
+6. If the EC2 instance is Ubuntu, use this instead:
+
+ssh -i "C:\Users\manoj\Downloads\DEVOPS(FLM).pem" ubuntu@ec2-98-88-74-45.compute-1.amazonaws.com
+
+
+7. If you get this question:
+
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+
+Type:
+
+yes
+
+
+IMPORTANT:
+============
+
+- Do NOT use chmod in Windows Command Prompt.
+- Do NOT edit or save the PEM file in Notepad.
+- Do NOT run "aws configure" to fix the SSH key problem.
+- AWS CLI credentials and the EC2 PEM SSH key are separate.
+
+
+FIRST COMMAND TO RUN:
+=====================
+
+dir "%USERPROFILE%\Downloads\*.pem"
